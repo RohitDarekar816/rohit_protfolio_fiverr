@@ -21,7 +21,7 @@ export function Footer() {
   return (
     <footer className="bg-slate-900 py-12 px-4 sm:px-6 lg:px-8 border-t border-purple-500/20">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div>
             <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent mb-4">
               Rohit Darekar
@@ -58,6 +58,27 @@ export function Footer() {
               <li>
                 <a href="#contact" className="text-gray-400 hover:text-purple-400 transition-colors">
                   Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-semibold mb-4">Legal</h4>
+            <ul className="space-y-2">
+              <li>
+                <a href="/terms-and-conditions" className="text-gray-400 hover:text-purple-400 transition-colors">
+                  Terms & Conditions
+                </a>
+              </li>
+              <li>
+                <a href="/refund-policy" className="text-gray-400 hover:text-purple-400 transition-colors">
+                  Refund Policy
+                </a>
+              </li>
+              <li>
+                <a href="/contact-us" className="text-gray-400 hover:text-purple-400 transition-colors">
+                  Contact Us
                 </a>
               </li>
             </ul>
