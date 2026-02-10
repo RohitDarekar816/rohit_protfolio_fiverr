@@ -1,14 +1,17 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Download, ArrowRight } from 'lucide-react';
+import { Github, Linkedin, Download, ArrowRight, Briefcase, Code2 } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
+import { useState } from 'react';
+import Link from 'next/link';
 
 export function Hero() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+  const [careerMode, setCareerMode] = useState<'freelance' | 'professional'>('freelance');
 
   return (
     <section
@@ -19,10 +22,46 @@ export function Hero() {
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM5QzkyQUMiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0di00aC0ydjRoLTR2Mmg0djRoMnYtNGg0djJINFptMC0zMFYwaC0ydjRoLTR2Mmg0djRoMlY2aDRWNGgtNHpNNiAzNHYtNEg0djRIMHYyaDR2NGgydi00aDR2Mkg2ek02IDRWMGg0djRIMHYyaDR2NGgyVjZoNFY0SDZ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
 
       <div className="max-w-7xl mx-auto text-center z-10">
+        {/* Career Toggle */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="mb-8"
+        >
+          <div className="inline-flex items-center gap-2 p-1.5 bg-slate-800/80 backdrop-blur-sm rounded-full border border-purple-500/30">
+            <button
+              onClick={() => setCareerMode('freelance')}
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                careerMode === 'freelance'
+                  ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg'
+                  : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              <Code2 className="w-4 h-4" />
+              Freelancing
+            </button>
+            <Link
+              href="/"
+              className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                careerMode === 'professional'
+                  ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg'
+                  : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              <Briefcase className="w-4 h-4" />
+              Professional
+            </Link>
+          </div>
+          <p className="text-gray-500 text-sm mt-3">
+            Toggle between my freelance and professional career profiles
+          </p>
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
         >
           <h2 className="text-purple-400 text-lg md:text-xl font-semibold mb-4">
             Hello, I'm

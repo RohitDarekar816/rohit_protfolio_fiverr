@@ -1,37 +1,23 @@
-import { Hero } from '@/components/Hero';
-import { Stats } from '@/components/Stats';
-import { Services } from '@/components/Services';
-import { Skills } from '@/components/Skills';
-import { Reviews } from '@/components/Reviews';
-import { About } from '@/components/About';
-import { Contact } from '@/components/Contact';
-import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
-import { TerminalSection } from '@/components/TerminalSection';
-import { CostCalculator } from '@/components/CostCalculator';
-import { ChatWidget } from '@/components/ChatWidget';
-import { ScrollProgress } from '@/components/ScrollProgress';
-import { InfrastructureExplorer } from '@/components/InfrastructureExplorer';
-import { GitHubHeatmap } from '@/components/GitHubHeatmap';
+import type { Metadata } from 'next';
+import { ProfessionalCareer } from '@/components/ProfessionalCareer';
+import { BuyMeACoffee } from '@/components/BuyMeACoffee';
+
+export const metadata: Metadata = {
+  title: 'Rohit Darekar | Associate DevOps Engineer',
+  description: 'Associate DevOps Engineer at AIT Global. Experienced in Docker, Kubernetes, CI/CD pipelines, and cloud infrastructure. View my professional experience and skills.',
+  keywords: 'DevOps Engineer, AIT Global, Docker, Kubernetes, CI/CD, AWS, Pune, India',
+  openGraph: {
+    title: 'Rohit Darekar | Associate DevOps Engineer',
+    description: 'Associate DevOps Engineer at AIT Global with expertise in cloud infrastructure and automation.',
+    type: 'profile',
+  },
+};
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-100 via-purple-100 to-slate-100 dark:from-slate-900 dark:via-purple-900 dark:to-slate-900 transition-colors duration-300">
-      <ScrollProgress />
-      <Navbar />
-      <Hero />
-      <TerminalSection />
-      <InfrastructureExplorer />
-      <GitHubHeatmap />
-      <Stats />
-      <About />
-      <Services />
-      <CostCalculator />
-      <Skills />
-      <Reviews />
-      <Contact />
-      <Footer />
-      <ChatWidget />
-    </main>
+    <>
+      <ProfessionalCareer />
+      <BuyMeACoffee />
+    </>
   );
 }

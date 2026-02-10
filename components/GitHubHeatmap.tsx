@@ -465,7 +465,7 @@ export function GitHubHeatmap() {
           className="text-center mt-12"
         >
           <a
-            href="https://github.com/rohitdarekar"
+            href="https://github.com/RohitDarekar816"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold rounded-full hover:bg-slate-800 dark:hover:bg-gray-100 transition-all duration-300 shadow-lg"

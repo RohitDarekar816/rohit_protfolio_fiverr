@@ -1,6 +1,7 @@
 'use client';
 
-import { Github, Linkedin, Heart } from 'lucide-react';
+import { Github, Linkedin, Heart, Container, Terminal, Activity, Workflow, FileText, Brain } from 'lucide-react';
+import Link from 'next/link';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -16,12 +17,17 @@ export function Footer() {
       icon: <span className="w-6 h-6 font-bold">F</span>,
       href: 'https://www.fiverr.com/rohitdarekar950',
     },
+    {
+      name: 'Buy Me a Coffee',
+      icon: <span className="w-6 h-6 text-lg">☕</span>,
+      href: 'https://buymeacoffee.com/rohitdarekar',
+    },
   ];
 
   return (
     <footer className="bg-white dark:bg-slate-900 py-12 px-4 sm:px-6 lg:px-8 border-t border-purple-200 dark:border-purple-500/20 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
           <div>
             <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-600 bg-clip-text text-transparent mb-4">
               Rohit Darekar
@@ -59,6 +65,48 @@ export function Footer() {
                 <a href="#contact" className="text-slate-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
                   Contact
                 </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-slate-900 dark:text-white font-semibold mb-4 transition-colors duration-300">Developer Tools</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/tools/docker-compose" className="text-slate-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                  <Container className="w-4 h-4" />
+                  Docker Compose
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/commands" className="text-slate-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                  <Terminal className="w-4 h-4" />
+                  Commands
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/metrics" className="text-slate-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                  <Activity className="w-4 h-4" />
+                  Metrics Dashboard
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/cicd" className="text-slate-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                  <Workflow className="w-4 h-4" />
+                  CI/CD Visualizer
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/quote" className="text-slate-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                  <FileText className="w-4 h-4" />
+                  Quote Generator
+                </Link>
+              </li>
+              <li>
+                <Link href="/tools/quiz" className="text-slate-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2">
+                  <Brain className="w-4 h-4" />
+                  DevOps Quiz
+                </Link>
               </li>
             </ul>
           </div>
