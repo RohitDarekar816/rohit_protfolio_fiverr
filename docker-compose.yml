@@ -1,5 +1,3 @@
-version: '3.8'
-
 # Docker Buildx Configuration for ARM Support
 # Usage:
 #   docker compose -f docker-compose.yml build

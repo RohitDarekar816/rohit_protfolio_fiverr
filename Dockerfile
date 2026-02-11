@@ -12,7 +12,7 @@ COPY package.json package-lock.json* ./
 
 # Use BuildKit cache mount for faster rebuilds on ARM
 RUN --mount=type=cache,target=/root/.npm \
-    npm install && npm cache clean --force
+    npm install
 
 # Stage 2: Builder
 FROM node:20-alpine AS builder
