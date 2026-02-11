@@ -1,4 +1,7 @@
 # Multi-stage Dockerfile for Next.js Frontend
+# Supports: linux/amd64, linux/arm64, linux/arm/v7
+# syntax=docker/dockerfile:1
+
 # Stage 1: Dependencies
 FROM node:20-alpine AS deps
 RUN apk add --no-cache libc6-compat
@@ -6,7 +9,10 @@ WORKDIR /app
 
 # Copy package files
 COPY package.json package-lock.json* ./
-RUN npm install && npm cache clean --force
+
+# Use BuildKit cache mount for faster rebuilds on ARM
+RUN --mount=type=cache,target=/root/.npm \
+    npm install && npm cache clean --force
 
 # Stage 2: Builder
 FROM node:20-alpine AS builder

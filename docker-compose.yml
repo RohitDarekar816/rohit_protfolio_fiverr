@@ -1,5 +1,11 @@
 version: '3.8'
 
+# Docker Buildx Configuration for ARM Support
+# Usage:
+#   docker compose -f docker-compose.yml build
+#   OR for cross-platform builds:
+#   docker buildx bake -f docker-compose.yml
+
 services:
   # Backend API Service
   backend:
@@ -7,6 +13,15 @@ services:
       context: ./backend
       dockerfile: Dockerfile
       target: runner
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - linux/arm/v7
+      cache_from:
+        - type=local,src=/tmp/.buildx-cache-backend
+      cache_to:
+        - type=local,dest=/tmp/.buildx-cache-backend,mode=max
+    image: portfolio-backend:latest
     container_name: portfolio-backend
     restart: unless-stopped
     ports:
@@ -32,8 +47,17 @@ services:
       context: .
       dockerfile: Dockerfile
       target: runner
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - linux/arm/v7
       args:
         - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL:-http://backend:3001}
+      cache_from:
+        - type=local,src=/tmp/.buildx-cache-frontend
+      cache_to:
+        - type=local,dest=/tmp/.buildx-cache-frontend,mode=max
+    image: portfolio-frontend:latest
     container_name: portfolio-frontend
     restart: unless-stopped
     ports:

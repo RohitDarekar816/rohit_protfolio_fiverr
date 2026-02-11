@@ -1,0 +1,51 @@
+version: '3.8'
+
+# Docker Buildx Multi-Platform Production Build
+# This file is for building and pushing images to a registry
+# Supports AMD64, ARM64, and ARMv7 architectures
+#
+# Usage:
+#   docker buildx bake -f docker-compose.buildx.yml --push
+#
+# Or build locally for current platform:
+#   docker buildx bake -f docker-compose.buildx.yml
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: runner
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - linux/arm/v7
+      args:
+        BUILDKIT_INLINE_CACHE: 1
+      cache_from:
+        - type=local,src=/tmp/.buildx-cache-backend
+        - type=gha,scope=backend
+      cache_to:
+        - type=local,dest=/tmp/.buildx-cache-backend,mode=max
+        - type=gha,scope=backend,mode=max
+    image: ${DOCKER_REGISTRY:-localhost}/portfolio-backend:${VERSION:-latest}
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+      platforms:
+        - linux/amd64
+        - linux/arm64
+        - linux/arm/v7
+      args:
+        BUILDKIT_INLINE_CACHE: 1
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://backend:3001}
+      cache_from:
+        - type=local,src=/tmp/.buildx-cache-frontend
+        - type=gha,scope=frontend
+      cache_to:
+        - type=local,dest=/tmp/.buildx-cache-frontend,mode=max
+        - type=gha,scope=frontend,mode=max
+    image: ${DOCKER_REGISTRY:-localhost}/portfolio-frontend:${VERSION:-latest}
