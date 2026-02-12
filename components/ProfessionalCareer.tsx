@@ -110,21 +110,22 @@ export function ProfessionalCareer() {
             <Link href="/" className="text-2xl font-bold text-slate-900">
               RD
             </Link>
-            <div className="flex items-center gap-6">
-              <a href="#experience" className="text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium">
+            <div className="flex items-center gap-2 sm:gap-4 md:gap-6">
+              <a href="#experience" className="hidden sm:block text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium">
                 Experience
               </a>
-              <a href="#education" className="text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium">
+              <a href="#education" className="hidden sm:block text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium">
                 Education
               </a>
-              <a href="#certifications" className="text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium">
+              <a href="#certifications" className="hidden md:block text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium">
                 Certifications
               </a>
               <Link 
                 href="/freelance" 
-                className="px-4 py-2 bg-slate-900 text-white rounded-lg text-sm font-medium hover:bg-slate-800 transition-colors"
+                className="px-3 py-1.5 sm:px-4 sm:py-2 bg-slate-900 text-white rounded-lg text-xs sm:text-sm font-medium hover:bg-slate-800 transition-colors whitespace-nowrap"
               >
-                View Freelance Work
+                <span className="sm:hidden">Freelance</span>
+                <span className="hidden sm:inline">View Freelance Work</span>
               </Link>
             </div>
           </div>
